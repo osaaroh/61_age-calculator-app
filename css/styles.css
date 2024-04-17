@@ -56,6 +56,13 @@ body{
     border-radius: 25px 25px 150px 25px;
 }
 
+@media screen and (max-width: 662px) {
+    .card{
+        padding: 1.65rem;
+        border-radius: 12.5px 12.5px 75px 12.5px;
+    }
+}
+
 .fields{
     display: flex;
     gap: 1.5rem;
@@ -72,6 +79,13 @@ body{
     letter-spacing: 0.15rem;
     color: var(--smokey-grey);
 }
+
+@media screen and (max-width: 662px) {
+    .input__group label{
+        font-size: 0.68rem
+    }
+}
+
 .input__group input{
     padding: 0.8rem 1rem;
     font-size: 1.5rem;
@@ -84,8 +98,8 @@ body{
 @media screen and (max-width: 662px) {
     .input__group input{
         padding: 0.8rem 1rem;
-        font-size: 1rem;
-        max-width: 100px;
+        font-size: 0.85rem;
+        max-width: 80px;
     }
 }
 
@@ -134,6 +148,14 @@ body{
 .result{
     color: var(--off-black);
 }
+
+@media screen and (max-width: 662px) {
+    .result{
+        margin-top: 2rem;
+    }
+}
+
+
 .result__group{
     display: flex;
     align-items: center;
@@ -150,7 +172,7 @@ body{
 
 @media screen and (max-width: 662px) {
     .result .calculated-value, .result .text{
-        font-size: 3.5rem;
+        font-size: 3rem;
         font-weight: 800;
     }
 }
