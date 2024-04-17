@@ -44,22 +44,22 @@ body{
     background-color: var(--off-white);
 }
 
+@media screen and (max-width: 662px) {
+    body{
+        padding: 1rem;
+    }
+}
+
 .card{
     background-color: var(--white);
     padding: 3rem;
     border-radius: 25px 25px 150px 25px;
-    padding-right: -3rem;
 }
 
 .fields{
     display: flex;
     gap: 1.5rem;
 }
-
-.fields,.result{
-    margin-right: 8.5rem;
-}
-
 .input__group{
     display: flex;
     flex-direction: column;
@@ -81,18 +81,40 @@ body{
     border: 1px solid var(--light-grey);
 }
 
+@media screen and (max-width: 662px) {
+    .input__group input{
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        max-width: 100px;
+    }
+}
+
 .button__section{
     display: flex;
     align-items: center;
-    /* width: 130%; */
+}
+
+@media screen and (max-width: 662px) {
+    .button__section{
+        flex-direction: column;
+        margin-top: 78px;
+    }
 }
 
 .button__section hr{
     display: block;
-    width: 100%;
+    width: 32rem;
     border: none;
     border-bottom: 1px solid var(--light-grey);
 }
+
+@media screen and (max-width: 662px) {
+    .button__section hr{
+        margin-bottom: -34px;
+        width: 100%;
+    }
+}
+
 .button__section button{
     background-color: var(--purple);
     border: none;
@@ -103,6 +125,8 @@ body{
     cursor: pointer;
     transition: all .3s;
 }
+
+
 .button__section button:hover{
     
 }
@@ -122,6 +146,13 @@ body{
     margin-block-start: 0px;
     margin-block-end: 0px;
     line-height: 115%;
+}
+
+@media screen and (max-width: 662px) {
+    .result .calculated-value, .result .text{
+        font-size: 3.5rem;
+        font-weight: 800;
+    }
 }
 .result .calculated-value{
     letter-spacing: 1rem;
