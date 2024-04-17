@@ -36,4 +36,67 @@ body{
     align-items: center;
     min-height: 100vh;
     font-family: var(--font-poppins);
+    background-color: var(--off-white);
+}
+
+.card{
+    background-color: var(--white);
+    padding: 3rem;
+    border-radius: 25px 25px 150px 25px;
+    width: 700px;
+}
+
+.fields{
+    display: flex;
+    gap: 1rem;
+}
+
+.input__group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+.input__group input{
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    max-width: 150px;
+    border: 1px solid var(--light-grey);
+}
+
+.button__section{
+    display: flex;
+    align-items: center;
+    /* width: 130%; */
+}
+.button__section hr{
+    display: block;
+    width: 100%;
+}
+.button__section button{
+    background-color: var(--purple);
+    border: none;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 78px;
+    height: 78px;
+}
+
+.result{
+    color: var(--off-black);
+}
+.result__group{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.result .calculated-value, .result .text{
+    font-size: 5.5rem;
+    font-weight: 700;
+    font-style: italic;
+}
+.result .calculated-value{
+    color: var(--purple);
 }
