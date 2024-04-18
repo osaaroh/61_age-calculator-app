@@ -103,6 +103,18 @@ body{
     }
 }
 
+.error{
+    color: var(--light-red);
+}
+
+.error-message-day,
+.error-message-month,
+.error-message-year{
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--light-red);
+}
+
 .button__section{
     display: flex;
     align-items: center;
