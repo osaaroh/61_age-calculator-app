@@ -65,10 +65,6 @@ const calculateAge = () => {
     resultYear.innerHTML = years;
     resultMonth.innerHTML = months;
     resultDay.innerHTML = days;
-
-    inputDay.innerHTML = "";
-    inputMonth.innerHTML = "";
-    inputYear.innerHTML = "";
   };
 
 
