@@ -28,19 +28,62 @@ let yearError = document.querySelector('.error-message-year');
 
 let isValid ="";
 
-btn.addEventListener("click", (e)=>{
+const setError=(htmlElement, errorText)=>{
+  htmlElement.innerHTML = errorText;
+}
+
+const calculateAge = () => {
+    const today = new Date();
+    const birthDate = new Date(parseInt(inputYear.value), parseInt(inputMonth.value) - 1, parseInt(inputDay.value));
+    
+    // Validate inputs
+    isNaN(parseInt(inputDay.value)) || parseInt(inputDay.value) <= 0 || parseInt(inputDay.value) > 31 ? setError(dayError, "Must be a valid day") : setError(dayError, "") ;
+    isNaN(parseInt(inputMonth.value)) || parseInt(inputMonth.value) <= 0 || parseInt(inputMonth.value) > 12 ? setError(monthError, "Invalid Month") : setError(monthError, "") ;
+    parseInt(inputYear.value) > today.getFullYear() || isNaN(parseInt(inputYear.value)) ? setError(yearError, "Invalid year") : setError(yearError, "");
+
+    
+
+    
+
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    let days = today.getDate() - birthDate.getDate();
+
+    if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+      years--;
+      months += 12;
+    }
+
+    if (days < 0) {
+      months--;
+      const tempDate = new Date(today.getFullYear(), today.getMonth(), 0);
+      days += tempDate.getDate();
+    }
+
+    console.log({ years, months, days })
+
+    resultYear.innerHTML = years;
+    resultMonth.innerHTML = months;
+    resultDay.innerHTML = days;
+
+    inputDay.innerHTML = "";
+    inputMonth.innerHTML = "";
+    inputYear.innerHTML = "";
+  };
+
+
+  btn.addEventListener("click", (e)=>{
     console.log('clicked button')
-    console.log(inputDay.value)
+    console.log(calculateAge())
 })
 
-//Check if year is leap year
-//change input to a new date like so:
+
+
+//helper functions if needed
 function covertToDate(dateString) {
    return new Date(dateString);
 }
 
-//subtract from current year - https://github.com/AliSepar/Frontend-metor-challanges/blob/main/age-calculator-app-main/app.js
-// helper - https://github.com/Nifix001/agecalculator/blob/master/app/page.tsx
 
 function getFormattedDate(date) {
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
