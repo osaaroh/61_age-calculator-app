@@ -116,7 +116,7 @@ const calculateAge = () => {
     let months = today.getMonth() - birthDate.getMonth();
     let days = today.getDate() - birthDate.getDate();
 
-    if (months < 0 && (months === 0 && today.getDate() < birthDate.getDate())) {
+    if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
       years--;
       months += 12;
     }
