@@ -189,8 +189,9 @@ body{
     }
 }
 .result .calculated-value{
-    letter-spacing: 1rem;
+    /* letter-spacing: 1rem; */
     color: var(--purple);
+    margin-right: 0.65rem;
 }
 .result .text{
     margin-left: -0.5rem;
