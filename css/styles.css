@@ -154,7 +154,7 @@ body{
 
 
 .button__section button:hover{
-    
+    background-color: var(--off-black);
 }
 
 .result{
@@ -191,7 +191,7 @@ body{
 .result .calculated-value{
     /* letter-spacing: 1rem; */
     color: var(--purple);
-    margin-right: 0.65rem;
+    margin-right: 0.85rem;
 }
 .result .text{
     margin-left: -0.5rem;
