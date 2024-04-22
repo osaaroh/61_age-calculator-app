@@ -93,6 +93,12 @@ body{
     border-radius: 8px;
     max-width: 125px;
     border: 1px solid var(--light-grey);
+    transition: all .3s;
+}
+.input__group input:hover,
+.input__group input:active,
+.input__group input:focus{
+    border: 1px solid var(--purple);
 }
 
 @media screen and (max-width: 662px) {
