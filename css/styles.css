@@ -13,6 +13,7 @@
 
     --purple: hsl(259, 100%, 65%);
     --light-red: hsl(0, 100%, 67%);
+    --very-light-red: hsla(0, 100%, 67%, 0.7);
 
     /* ### Neutral */
 
@@ -109,16 +110,20 @@ body{
     }
 }
 
+.error-input{
+    border: 1px solid var(--light-red) !important;
+}
+
 .error{
-    color: var(--light-red);
+    color: var(--very-light-red) !important;
 }
 
 .error-message-day,
 .error-message-month,
 .error-message-year{
     font-size: 0.75rem;
-    font-weight: 700;
     color: var(--light-red);
+    font-style: italic;
 }
 
 .button__section{

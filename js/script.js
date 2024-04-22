@@ -30,36 +30,66 @@ let isValidDay = false;
 let isValidMonth = false;
 let isValidYear = false;
 
+
+
+const validateInputs = (today) => {
+    // Validate day input
+    isNaN(parseInt(inputDay.value)) || parseInt(inputDay.value) <= 0 || parseInt(inputDay.value) > 31 ? setError("day", dayError, "Must be a valid day", true) : setError("day", dayError, "", false ) ;
+
+     // Validate month input
+    isNaN(parseInt(inputMonth.value)) || parseInt(inputMonth.value) <= 0 || parseInt(inputMonth.value) > 12 ? setError("month",monthError, "Must be a valid month", true) : setError("month", monthError, "", false) ;
+    
+    //validate year input
+    parseInt(inputYear.value) > today.getFullYear() || isNaN(parseInt(inputYear.value)) || parseInt(inputYear.value) <= 0 ? setError("year", yearError, "Must be in the past and valid", true) : setError("year", yearError, "", false);
+}
+
 const setError=(time, htmlElement, errorText, status)=>{
   htmlElement.innerHTML = errorText;
 
   if (time=="day") {
-    time=="day" && status==false ? isValidDay = true : isValidDay = false;
+    if (time=="day" && status==false) {
+        isValidDay = true;
+        //remove error classes
+        inputDay.classList.remove("error-input");
+        dayLabel.classList.remove("error");
+    } else {
+        isValidDay = false;
+        //add error classes to label and input
+        inputDay.classList.add("error-input");
+        dayLabel.classList.add("error");
+    }
   } else if(time=="month") {
-    time=="month" && status==false ? isValidMonth = true : isValidMonth = false;
+    if (time=="month" && status==false) {
+        isValidMonth = true;
+        //remove error classes 
+        monthLabel.classList.remove("error");
+        inputMonth.classList.remove("error-input");
+    } else {
+        isValidMonth = false;
+        //add error classes 
+        monthLabel.classList.add("error");
+        inputMonth.classList.add("error-input");
+    }
   } else if(time=="year") {
-    time=="year" && status==false ? isValidYear = true : isValidYear = false;
+    if (time=="year" && status==false) {
+        isValidYear = true;
+        //remove error classes
+        yearLabel.classList.remove("error");
+        inputYear.classList.remove("error-input");
+    } else {
+        isValidYear = false;
+        //add error classes
+        yearLabel.classList.add("error");
+        inputYear.classList.add("error-input");
+    }
   }
-
-  
-  
-  
-  }
+}
 
 const calculateAge = () => {
     const today = new Date();
     const birthDate = new Date(parseInt(inputYear.value), parseInt(inputMonth.value) - 1, parseInt(inputDay.value));
-    
-    // Validate inputs
-    isNaN(parseInt(inputDay.value)) || parseInt(inputDay.value) <= 0 || parseInt(inputDay.value) > 31 ? setError("day", dayError, "Must be a valid day", true) : setError("day", dayError, "", false ) ;
 
-    isNaN(parseInt(inputMonth.value)) || parseInt(inputMonth.value) <= 0 || parseInt(inputMonth.value) > 12 ? setError("month",monthError, "Invalid Month", true) : setError("month", monthError, "", false) ;
-    
-    parseInt(inputYear.value) > today.getFullYear() || isNaN(parseInt(inputYear.value)) ? setError("year", yearError, "Invalid year", true) : setError("year", yearError, "", false);
-
-    
-
-    
+    validateInputs(today);
 
     let years = today.getFullYear() - birthDate.getFullYear();
     let months = today.getMonth() - birthDate.getMonth();
@@ -76,8 +106,6 @@ const calculateAge = () => {
       days += tempDate.getDate();
     }
 
-    console.log({ years, months, days })
-
     if (!isValidDay || !isValidMonth || !isValidYear) {
       resultYear.innerHTML = '- -';
       resultMonth.innerHTML = '- -';
@@ -88,7 +116,8 @@ const calculateAge = () => {
       resultDay.innerHTML = days;
     }
     
-    console.log(isValidDay, isValidMonth, isValidYear)
+    console.log({'validDay': isValidDay, 'validMonth' :isValidMonth, 'validYear':isValidYear});
+    console.log({ years, months, days });
   };
 
 
@@ -96,18 +125,3 @@ const calculateAge = () => {
     console.log('clicked button')
     console.log(calculateAge())
 })
-
-
-
-//helper functions if needed
-function covertToDate(dateString) {
-   return new Date(dateString);
-}
-
-
-function getFormattedDate(date) {
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-}
-function getDateMinusDays(date, days) {
-    return new Date(date.getFullYear(), date.getMonth(), date.getDate() - days)
-}
