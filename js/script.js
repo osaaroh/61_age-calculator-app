@@ -31,17 +31,38 @@ let isValidMonth = false;
 let isValidYear = false;
 
 
+const checkFor30dayMonth=(day, month)=>{
+    //February days check
+    if (day && month == 2) {
+        if (day>=30) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //30 day month check - April, June, September, November
+    if (day && (month==4 || month==6 || month==9 || month==11)) {
+        if (day>=31) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    return false;
+}
+
 
 const validateInputs = (today) => {
     // Validate day input
     isNaN(parseInt(inputDay.value)) || parseInt(inputDay.value) <= 0 || parseInt(inputDay.value) > 31 ? setError("day", dayError, "Must be a valid day", true) : setError("day", dayError, "", false ) ;
 
      // Validate month input
-    isNaN(parseInt(inputMonth.value)) || parseInt(inputMonth.value) <= 0 || parseInt(inputMonth.value) > 12 ? setError("month",monthError, "Must be a valid month", true) : setError("month", monthError, "", false) ;
+    isNaN(parseInt(inputMonth.value)) || parseInt(inputMonth.value) <= 0 || parseInt(inputMonth.value) > 12 || checkFor30dayMonth(parseInt(inputDay.value), parseInt(inputMonth.value))? setError("month",monthError, "Must be a valid month", true) : setError("month", monthError, "", false) ;
     
     //validate year input
     parseInt(inputYear.value) > today.getFullYear() || isNaN(parseInt(inputYear.value)) || parseInt(inputYear.value) <= 0 ? setError("year", yearError, "Must be in the past and valid", true) : setError("year", yearError, "", false);
 }
+
 
 const setError=(time, htmlElement, errorText, status)=>{
   htmlElement.innerHTML = errorText;
@@ -52,7 +73,7 @@ const setError=(time, htmlElement, errorText, status)=>{
         //remove error classes
         inputDay.classList.remove("error-input");
         dayLabel.classList.remove("error");
-    } else {
+    }else {
         isValidDay = false;
         //add error classes to label and input
         inputDay.classList.add("error-input");
